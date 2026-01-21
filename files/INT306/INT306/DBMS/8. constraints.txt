@@ -1,0 +1,60 @@
+create table employee(fname varchar2(10),lname varchar2(10),
+empid number(10) CONSTRAINT PK1 PRIMARY KEY,loc varchar2(10),salary number(10));
+
+insert into employee values('Ram','Sinha',1,'ldh',23400);
+insert into employee values('Ram','Sinha',1,'ldh',23400);
+
+drop table employee;
+
+create table employee(fname varchar2(10),lname varchar2(10),
+empid number(10) CONSTRAINT PK1 PRIMARY KEY,loc varchar2(10) constraint uq1 unique,salary number(10));
+
+insert into employee values('Ram','Sinha',1,'ldh',23400);
+insert into employee values('Ram','Sinha',2,'ldh',23400);
+
+create table department(dname varchar2(10),empid number(10), constraint fk1 FOREIGN KEY(empid) references employee(empid));
+
+insert into department values('cse',3);
+insert into department values('cse',1);
+
+
+create table emp1(fname varchar2(10),salary number(10) constraint emp_sal CHECK(salary>0));
+
+insert into emp1 values('sham',0);
+insert into emp1 values('sham',100);
+
+create table dept1(name varchar2(10) NOT NULL);
+insert into dept1 values('');
+
+
+case study
+1 create a table student_personal with columns as
+sname,age,dept,year,regno
+2 Make regno as primary key,age as not null,dept as unique,year of student should be greater then 2017
+3 create another table student_more with columns as regno,interests.
+4 Regno column in student_more table should be foreign key refering to primary key of student_personal table
+
+//add column to a table 
+
+alter table employee add (jobid varchar2(10));
+
+//modify
+
+alter table employee modify (jobid number(10));
+
+//drop column
+
+alter table employee drop (jobid);
+
+
+//delete table
+
+drop employee;
+
+
+
+
+
+
+
+
