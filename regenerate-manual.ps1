@@ -1,8 +1,9 @@
-# Regenerate CHE110, CSE121, ECE249, ECE279 with download buttons
+# Regenerate CHE110, CSE121, CSE320, ECE249, ECE279 with download buttons
 
 $manualSubjects = @{
     'CHE110' = '🧪 CHE110'
     'CSE121' = '💻 CSE121'
+    'CSE320' = '💻 CSE320'
     'ECE249' = '⚡ ECE249'
     'ECE279' = '⚡ ECE279'
 }
