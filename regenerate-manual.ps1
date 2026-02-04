@@ -42,6 +42,12 @@ foreach ($subjectCode in $manualSubjects.Keys) {
     # Group files by parent folder
     $filesByFolder = $files | Group-Object { $_.Directory.Name }
     
+    # Natural sort function for proper numeric ordering
+    function Get-NaturalSortKey {
+        param($name)
+        [regex]::Replace($name, '\d+', { param($m) $m.Value.PadLeft(20, '0') })
+    }
+    
     $counter = 0
     foreach ($folderGroup in $filesByFolder | Sort-Object Name) {
         $folderName = $folderGroup.Name
@@ -56,7 +62,10 @@ foreach ($subjectCode in $manualSubjects.Keys) {
 "@
         }
         
-        foreach ($file in $folderGroup.Group) {
+        # Sort files naturally within each folder
+        $sortedFiles = $folderGroup.Group | Sort-Object { Get-NaturalSortKey $_.Name }
+        
+        foreach ($file in $sortedFiles) {
             $counter++
             $fileName = $file.Name
             $websiteRoot = "a:\NOTES\notes-website\"
